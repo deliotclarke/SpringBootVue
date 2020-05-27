@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import api from "../Api";
 // visibility filters
 let filters = {
   all: function(todos) {
@@ -126,9 +127,17 @@ const Todos = {
 
   mounted() {
     // inject startup data
-    this.todos = [{ title: "Drink some coffee, bud", completed: false }];
-    // hide the loading message
-    this.loading = false;
+    api
+      .getAll()
+      .then(res => {
+        this.$log.debug("data loaded: ", res.data);
+        this.todos = res.data;
+      })
+      .catch(error => {
+        this.$log.debug(error);
+        this.error = "failed to load todos";
+      })
+      .finally(() => (this.loading = false));
   },
 
   //computed properties
