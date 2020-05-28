@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import Todos from './components/Todos';
 
 Vue.use(Auth, {
-  issuer: 'https://dev-610938-admin.okta.com/oauth2/default',
+  issuer: 'https://dev-610938.oktapreview.com/oauth2/default',
   client_id: '0oada2kbxSzAv2btE4x6',
   redirect_uri: window.location.origin + '/implicit/callback',
   scope: 'openid profile email',
