@@ -2,6 +2,10 @@
   <div id="app">
     <router-view :activeUser="activeUser" />
     <footer class="info">
+      <p v-if="activeUser" class="logout-link">
+        <a @click="handleLogout" href="#">Logout</a>
+      </p>
+
       <p>
         Based on a project written by
         <a href="http://evanyou.me">Evan You</a>

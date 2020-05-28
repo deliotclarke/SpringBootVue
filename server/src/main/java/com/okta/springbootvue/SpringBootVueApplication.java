@@ -1,6 +1,5 @@
 package com.okta.springbootvue;
 
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -11,7 +10,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Collections;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class SpringBootVueApplication {
@@ -21,17 +19,17 @@ public class SpringBootVueApplication {
 	}
 
 	// "bootstrap" some test data into the in-memory database
-	@Bean
-	ApplicationRunner init(TodoRepository repository) {
-		return args -> {
-			Stream.of("Buy milk", "Eat pizza", "Write tutorial", "Study Vue.js", "Study JAVAAAAAA", "Read about Springboot").forEach(name ->{
-				Todo todo = new Todo();
-				todo.setTitle(name);
-				repository.save(todo);
-			});
-			repository.findAll().forEach(System.out::println);
-		};
-	}
+//	@Bean
+//	ApplicationRunner init(TodoRepository repository) {
+//		return args -> {
+//			Stream.of("Buy milk", "Eat pizza", "Write tutorial", "Study Vue.js", "Study JAVAAAAAA", "Read about Springboot").forEach(name ->{
+//				Todo todo = new Todo();
+//				todo.setTitle(name);
+//				repository.save(todo);
+//			});
+//			repository.findAll().forEach(System.out::println);
+//		};
+//	}
 
 	// Fix the CORS errors
 	@Bean
