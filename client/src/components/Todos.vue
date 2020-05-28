@@ -218,7 +218,7 @@ const Todos = {
       api
         .updateForId(todo.id, todo.title, todo.completed)
         .then((res) => {
-          this.$log.info('Item updated: ', response.data);
+          this.$log.info('Item updated: ', res.data);
         })
         .catch((error) => {
           this.$log.debug(error);
