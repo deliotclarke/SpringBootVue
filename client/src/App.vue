@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Todos />
+    <router-view :activeUser="activeUser" />
     <footer class="info">
       <p>
         Based on a project written by
@@ -16,16 +16,35 @@
 </template>
 
 <script>
-import Todos from "./components/Todos";
 // app Vue instance
 const app = {
-  name: "app",
-  components: {
-    Todos
-  },
+  name: 'app',
   data: () => {
-    return {};
-  }
+    return {
+      activeUser: null,
+    };
+  },
+
+  async created() {
+    await this.refreshActiveUser();
+  },
+
+  watch: {
+    $route: 'refreshActiveUser',
+  },
+
+  methods: {
+    async refreshActiveUser() {
+      this.activeUser = await this.$auth.getUser();
+      this.$log.debug('activeUser: ', this.activeUser);
+    },
+
+    async handleLogout() {
+      await this.$auth.logout();
+      await this.refreshActiveUser();
+      this.$router.go('/');
+    },
+  },
 };
 
 export default app;
