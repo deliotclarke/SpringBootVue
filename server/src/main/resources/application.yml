@@ -2,3 +2,7 @@
 server:
   port: 9000
 
+okta:
+  oauth2:
+    client-id: 0oada2kbxSzAv2btE4x6
+    issuer: https://dev-610938.okta.com/oauth2/default

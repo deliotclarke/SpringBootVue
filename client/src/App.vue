@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Todos />
+    <router-view :activeUser="activeUser" />
     <footer class="info">
       <p>
         Based on a project written by
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import Todos from './components/Todos';
 // app Vue instance
 const app = {
   name: 'app',
